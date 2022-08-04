@@ -1,26 +1,42 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+
+import { pubLicRoutes } from '~/routes';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    return (
+        <>
+            <Router>
+                {pubLicRoutes.map((route, index) => {
+                    const btn = route.path === '/' ? 'home' : route.path.slice(1);
+                    return (
+                        <button key={index} style={{ textDecoration: 'none' }}>
+                            <a href={route.path} style={{ textDecoration: 'none' }}>
+                                {btn}
+                            </a>
+                        </button>
+                    );
+                })}
+                <Routes>
+                    {pubLicRoutes.map((route, index) => {
+                        const Layout = route.layout;
+                        const Page = route.component;
+                        return (
+                            <Route
+                                key={index}
+                                path={route.path}
+                                element={
+                                    <Layout>
+                                        <Page />
+                                    </Layout>
+                                }
+                            />
+                        );
+                    })}
+                </Routes>
+            </Router>
+        </>
+    );
 }
 
 export default App;
