@@ -5,17 +5,17 @@ import { Home, Following, Upload } from '~/pages';
 
 const pubLicRoutes = [
     {
-        path: '/',
+        path: '',
         component: Home,
         layout: DefaultLayout,
     },
     {
-        path: '/following',
+        path: 'following',
         component: Following,
         layout: DefaultLayout,
     },
     {
-        path: '/upload',
+        path: 'upload',
         component: Upload,
         layout: HeaderOnlyLayout,
     },
