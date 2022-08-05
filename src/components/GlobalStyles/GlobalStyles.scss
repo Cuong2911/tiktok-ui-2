@@ -3,9 +3,17 @@
 @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@200;300;400;500;600;700&display=swap');
 
 :root {
+    // color
+    --box-shadow-color-1: rgb(0 0 0 / 12%);
+
+    // size
+    --height-layout-header: 60px;
+    --width-layout-container: 1150px;
 }
 * {
     box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 html {
     font-size: 62.5%;

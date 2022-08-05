@@ -1,5 +1,3 @@
-import React from 'react';
-
 import './GlobalStyles.scss';
 
 interface Props {

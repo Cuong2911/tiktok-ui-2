@@ -1,0 +1,19 @@
+.wrapper {
+    display: flex;
+    justify-content: center;
+    height: var(--height-layout-header);
+    box-shadow: 0px 1px 1px var(--box-shadow-color-1);
+}
+.container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+    width: var(--width-layout-container);
+}
+.container-left {
+}
+.container-center {
+}
+.container-right {
+}

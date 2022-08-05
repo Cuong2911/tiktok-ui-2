@@ -1,38 +1,27 @@
-import React from 'react';
-import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 
 import { pubLicRoutes } from '~/routes';
 
 function App() {
     return (
-        <Router>
+        <Routes>
             {pubLicRoutes.map((route, index) => {
-                const btn = route.path || 'home';
+                const Layout = route.layout;
+                const Page = route.component;
                 return (
-                    <button key={index} style={{ textDecoration: 'none' }}>
-                        <Link to={route.path}>{btn}</Link>
-                    </button>
+                    <Route
+                        key={index}
+                        path={route.path}
+                        element={
+                            <Layout>
+                                <Page />
+                            </Layout>
+                        }
+                    />
                 );
             })}
-            <Routes>
-                {pubLicRoutes.map((route, index) => {
-                    const Layout = route.layout;
-                    const Page = route.component;
-                    return (
-                        <Route
-                            key={index}
-                            path={route.path}
-                            element={
-                                <Layout>
-                                    <Page />
-                                </Layout>
-                            }
-                        />
-                    );
-                })}
-                <Route path="*" element={<h1>Not found</h1>} />
-            </Routes>
-        </Router>
+            <Route path="*" element={<h1>Not found</h1>} />
+        </Routes>
     );
 }
 

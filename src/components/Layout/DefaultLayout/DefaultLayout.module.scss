@@ -1,0 +1,19 @@
+.page {
+}
+
+.body-wrapper {
+    display: flex;
+    justify-content: center;
+}
+.body-container {
+    display: flex;
+    justify-content: space-between;
+    width: var(--width-layout-container);
+}
+.body-content {
+    width: 692px;
+    max-width: 692px;
+    margin-right: 16px;
+    margin-left: 16px;
+    padding: 24px 0;
+}
