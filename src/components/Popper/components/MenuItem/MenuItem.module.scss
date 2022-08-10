@@ -1,0 +1,26 @@
+.menu-item-wrap {
+    padding: 10px 16px;
+    cursor: pointer;
+
+    &:hover {
+        background-color: var(--btn-color-hover-1);
+    }
+}
+.menu-item {
+    display: flex;
+    white-space: nowrap;
+    flex-direction: row;
+    -webkit-box-align: center;
+    align-items: center;
+}
+.menu-item-icon {
+    margin-right: 8px;
+    width: 20px;
+    height: 20px;
+    flex: 0 0 20px;
+}
+.menu-item-title {
+}
+.borderTop {
+    border-top: 1px solid var(--border-color-btn1);
+}

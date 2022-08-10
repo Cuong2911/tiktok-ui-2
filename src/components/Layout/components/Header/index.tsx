@@ -1,16 +1,17 @@
 import { useEffect, useState } from 'react';
 import classNames from 'classnames/bind';
 import { Link } from 'react-router-dom';
-import { AiOutlineSearch, AiOutlineLoading3Quarters, AiFillCloseCircle } from 'react-icons/ai';
+import { AiOutlineSearch, AiOutlineLoading3Quarters, AiFillCloseCircle, AiOutlineMore } from 'react-icons/ai';
 import { GrAdd } from 'react-icons/gr';
-import Tippy from '@tippyjs/react/headless';
+import Tippy from '@tippyjs/react';
+import 'tippy.js/dist/tippy.css';
 
 import styles from './Header.module.scss';
+import { user1 } from './constants';
 
 import images from '~/assets/images';
-import { Wrapper as PopperWrapper } from '~/components/Popper';
-import AccountItem from './AccountItem';
 import Button from '~/components/Button';
+import { SearchResult, Menu } from '~/components/Popper';
 
 const cx = classNames.bind(styles);
 
@@ -21,6 +22,20 @@ interface Isearch {
 }
 
 function Header() {
+    const token = localStorage.getItem('tiktok-user');
+    const [user, setUser] = useState(token && JSON.parse(token));
+
+    const onLogin = () => {
+        console.log('login');
+        setUser(user1);
+        localStorage.setItem('tiktok-user', JSON.stringify(user1));
+    };
+    const onLogout = () => {
+        console.log('log out');
+        setUser(null);
+        localStorage.removeItem('tiktok-user');
+    };
+
     const [search, setSearch] = useState<Isearch>({
         input: '',
         loading: false,
@@ -52,22 +67,7 @@ function Header() {
                     </div>
                     <div className={cx('container-center')}>
                         <div className={cx('search-wrapper')}>
-                            <Tippy
-                                visible={!!search.result.length}
-                                interactive={true}
-                                render={(attrs) => {
-                                    return (
-                                        <div className={cx('search-result-box')} tabIndex={-1} {...attrs}>
-                                            <PopperWrapper>
-                                                <h4 className={cx('search-result-label')}>Accounts</h4>
-                                                <AccountItem />
-                                                <AccountItem />
-                                                <AccountItem />
-                                            </PopperWrapper>
-                                        </div>
-                                    );
-                                }}
-                            >
+                            <SearchResult visible={!!search.result.length}>
                                 <form className={cx('search-form')}>
                                     <input
                                         type="text"
@@ -98,15 +98,56 @@ function Header() {
                                         </div>
                                     </button>
                                 </form>
-                            </Tippy>
+                            </SearchResult>
                         </div>
                     </div>
                     <div className={cx('container-right')}>
                         <Button to="/upload" btn1>
                             <GrAdd />
-                            <span>Tai len</span>
+                            <span>Tải lên</span>
                         </Button>
-                        <Button primary>Dang nhap</Button>
+                        {!!user ? (
+                            <>
+                                <Button to="/messages" noSize>
+                                    <Tippy content="Tin nhắn">
+                                        <div className={cx('icon-wrap')}>
+                                            <img
+                                                src={images.messagesIcon}
+                                                alt="message"
+                                                className={cx('messages-icon')}
+                                            />
+                                        </div>
+                                    </Tippy>
+                                </Button>
+                                <Button noSize>
+                                    <Tippy content="Hộp thư">
+                                        <div className={cx('icon-wrap')}>
+                                            <img src={images.mailBoxIcon} alt="mail" className={cx('mailbox-icon')} />
+                                            <sup className={cx('sup-badge')}>2</sup>
+                                        </div>
+                                    </Tippy>
+                                </Button>
+                                <Menu onLogout={onLogout}>
+                                    <div className={cx('user')}>{<img src={user.avatar} alt="user" />}</div>
+                                </Menu>
+                            </>
+                        ) : (
+                            <>
+                                <Button
+                                    primary
+                                    onClick={() => {
+                                        onLogin();
+                                    }}
+                                >
+                                    Đăng nhập
+                                </Button>
+                                <Menu>
+                                    <div className={cx('seemore')}>
+                                        <AiOutlineMore />
+                                    </div>
+                                </Menu>
+                            </>
+                        )}
                     </div>
                 </div>
             </div>

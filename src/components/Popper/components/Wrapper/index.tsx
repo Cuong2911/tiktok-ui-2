@@ -5,7 +5,7 @@ import styles from './Wrapper.module.scss';
 const cx = classNames.bind(styles);
 
 interface Props {
-    children?: JSX.Element | JSX.Element[];
+    children?: JSX.Element | JSX.Element[] | string;
 }
 
 function Wrapper(props: Props) {

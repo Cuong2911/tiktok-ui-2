@@ -13,6 +13,7 @@ interface Props {
     primary?: boolean;
     primaryOutline?: boolean;
     btn1?: boolean;
+    noSize?: boolean;
     rounder?: boolean;
     small?: boolean;
     large?: boolean;
@@ -27,6 +28,7 @@ function Button(props: Props) {
         primary = false,
         primaryOutline = false,
         btn1 = false,
+        noSize = false,
         rounder = false,
         small,
         large = false,
@@ -54,6 +56,7 @@ function Button(props: Props) {
         primary,
         primaryOutline,
         btn1,
+        noSize,
         rounder,
         small,
         large,

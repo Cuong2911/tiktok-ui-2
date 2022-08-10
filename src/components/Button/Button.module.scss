@@ -13,7 +13,7 @@
     border: 1px solid #fff;
     background-color: var(--bg-color-default);
     & + .wrapper {
-        margin-left: 12px;
+        margin-left: 16px;
     }
     span {
         margin-left: 6px;
@@ -40,6 +40,10 @@
     &:hover {
         background-color: var(--btn-color-hover-1);
     }
+}
+.noSize {
+    min-width: unset;
+    padding: unset;
 }
 .rounder {
     border-radius: 52px;

@@ -90,19 +90,56 @@
     font-size: 24px;
     opacity: 0.3;
 }
-.search-result-box {
-    width: 440px;
-}
-.search-result-label {
-    height: 30px;
-    padding: 5px 12px;
-    font-size: 14px;
-    line-height: 20px;
-    font-weight: 600;
-    color: var(--text-color-sub);
-}
 
 .container-right {
     display: flex;
     align-items: center;
+    justify-content: center;
+}
+.seemore {
+    display: flex;
+    margin-left: 16px;
+    cursor: pointer;
+    font-size: 24px;
+    padding: 0 4px;
+}
+.icon-wrap {
+    position: relative;
+    display: flex;
+    align-items: center;
+    .sup-badge {
+        position: absolute;
+        color: var(--text-color-2);
+        font-size: 14px;
+        line-height: 20px;
+        left: 16px;
+        background: var(--color-primary);
+        min-width: 20px;
+        height: 20px;
+        display: flex;
+        -webkit-box-pack: center;
+        justify-content: center;
+        border-radius: 10px;
+        top: -20%;
+    }
+}
+.messages-icon {
+    width: 26px;
+    height: 26px;
+}
+.mailbox-icon {
+    width: 32px;
+    height: 32px;
+}
+
+.user {
+    display: flex;
+    align-items: center;
+    margin-left: 24px;
+    cursor: pointer;
+    img {
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+    }
 }

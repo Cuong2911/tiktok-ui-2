@@ -1,6 +1,7 @@
 @import 'normalize.css';
 @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@200;300;400;500;600;700&display=swap');
 @import 'tippy.js/dist/tippy.css'; // optional
+@import './ScrollbarStyles.scss';
 
 :root {
     // color
@@ -53,4 +54,7 @@ button {
 a {
     text-decoration: none;
     color: var(--text-color);
+}
+li {
+    list-style: none;
 }
