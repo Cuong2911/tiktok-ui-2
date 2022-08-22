@@ -1,0 +1,45 @@
+.inbox-header {
+    padding-top: 24px;
+    flex: 0 0 auto;
+    padding-left: 16px;
+}
+.header-title {
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 28px;
+    display: flex;
+}
+.header-back {
+    cursor: pointer;
+}
+.div-group {
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 20px;
+    margin-top: 16px;
+    display: flex;
+    flex-flow: row wrap;
+}
+.span-group {
+    background: rgb(241, 241, 241);
+    display: block;
+    padding: 2px 8px;
+    margin-bottom: 12px;
+    text-align: center;
+    cursor: pointer;
+    border-radius: 12px;
+    transition: all 300ms ease 0s;
+    &:not(:last-child) {
+        margin-right: 8px;
+    }
+    &:hover {
+        background: rgba(0, 0, 0, 0.12);
+    }
+    &.active {
+        color: rgb(255, 255, 255);
+        background: rgb(22, 24, 35);
+    }
+}
+.pb-24 {
+    padding-bottom: 24px;
+}

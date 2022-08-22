@@ -2,8 +2,10 @@
 }
 
 .body-wrapper {
+    margin-top: var(--height-layout-header);
     display: flex;
     justify-content: center;
+    min-height: 1000px;
 }
 .body-container {
     display: flex;

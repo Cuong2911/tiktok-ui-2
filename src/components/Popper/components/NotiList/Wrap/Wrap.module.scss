@@ -1,0 +1,13 @@
+.wrapper {
+    position: relative;
+    display: flex;
+    min-height: 68px;
+    flex-direction: row;
+    align-items: center;
+    cursor: pointer;
+    padding: 10px 16px;
+
+    &:hover {
+        background-color: var(--btn-color-hover-2);
+    }
+}

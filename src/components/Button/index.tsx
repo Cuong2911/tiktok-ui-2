@@ -1,6 +1,7 @@
+// library
 import classNames from 'classnames/bind';
 import { Link } from 'react-router-dom';
-
+// scss, constants,..
 import styles from './Button.module.scss';
 
 const cx = classNames.bind(styles);
@@ -30,7 +31,7 @@ function Button(props: Props) {
         btn1 = false,
         noSize = false,
         rounder = false,
-        small,
+        small = false,
         large = false,
         onClick,
         dissable = false,

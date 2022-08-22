@@ -1,5 +1,6 @@
+// library
 import { Route, Routes } from 'react-router-dom';
-
+// constants, css,..
 import { pubLicRoutes } from '~/routes';
 
 function App() {

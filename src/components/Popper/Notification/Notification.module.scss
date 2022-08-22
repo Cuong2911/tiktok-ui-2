@@ -1,0 +1,36 @@
+.wrapper {
+    position: relative;
+    text-align: start;
+}
+.box {
+    display: block;
+    position: absolute;
+    width: 376px;
+    height: 640px;
+    top: 45px;
+    right: -66px;
+    background: var(--bg-color-default);
+    border-radius: 8px;
+    box-shadow: var(--box-shadow-color-1) 0px -4px 32px;
+    transition: all 200ms linear 0s;
+    z-index: 10000;
+    opacity: 1;
+    &::after {
+        content: '';
+        position: absolute;
+        width: 0;
+        height: 0;
+        border-bottom: 8px solid #fff;
+        border-left: 8px solid transparent;
+        border-right: 8px solid transparent;
+        top: -8px;
+        right: 74px;
+    }
+}
+.inbox {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    color: var(--text-color);
+    cursor: default;
+}

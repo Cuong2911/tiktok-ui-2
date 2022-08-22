@@ -1,8 +1,9 @@
+// library
 import classNames from 'classnames/bind';
-
+// scss, consstants, ..
 import styles from './HeaderOnlyLayout.module.scss';
-
-import { Header } from '~/components/Layout/components';
+// components
+import { Header } from '~/layouts/components';
 
 const cx = classNames.bind(styles);
 
@@ -15,7 +16,7 @@ function HeaderOnlyLayout(props: Props) {
     return (
         <>
             <Header />
-            <div>{children}</div>
+            <div className={cx('body-wrapper')}>{children}</div>
         </>
     );
 }

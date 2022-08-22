@@ -1,7 +1,7 @@
 // layout
-import { DefaultLayout, HeaderOnlyLayout } from '~/components/Layout';
+import { DefaultLayout, HeaderOnlyLayout } from '~/layouts';
 // page
-import { Home, Following, Upload } from '~/pages';
+import { Home, Following, Upload, UserDetails } from '~/pages';
 
 const pubLicRoutes = [
     {
@@ -18,6 +18,11 @@ const pubLicRoutes = [
         path: 'upload',
         component: Upload,
         layout: HeaderOnlyLayout,
+    },
+    {
+        path: '@:nickname',
+        component: UserDetails,
+        layout: DefaultLayout,
     },
 ];
 const privateRoutes = [{}];

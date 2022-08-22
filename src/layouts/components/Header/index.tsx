@@ -1,30 +1,25 @@
+// library
 import { useEffect, useState } from 'react';
 import classNames from 'classnames/bind';
 import { Link } from 'react-router-dom';
-import { AiOutlineSearch, AiOutlineLoading3Quarters, AiFillCloseCircle, AiOutlineMore } from 'react-icons/ai';
+import { AiOutlineMore } from 'react-icons/ai';
 import { GrAdd } from 'react-icons/gr';
 import Tippy from '@tippyjs/react';
 import 'tippy.js/dist/tippy.css';
-
+// scss,constants,...
 import styles from './Header.module.scss';
 import { user1 } from './constants';
-
 import images from '~/assets/images';
+// components
 import Button from '~/components/Button';
-import { SearchResult, Menu } from '~/components/Popper';
+import { Menu, Notification } from '~/components/Popper';
+import Search from '../Search';
 
 const cx = classNames.bind(styles);
-
-interface Isearch {
-    input: string;
-    loading: boolean;
-    result: number[];
-}
 
 function Header() {
     const token = localStorage.getItem('tiktok-user');
     const [user, setUser] = useState(token && JSON.parse(token));
-
     const onLogin = () => {
         console.log('login');
         setUser(user1);
@@ -36,25 +31,10 @@ function Header() {
         localStorage.removeItem('tiktok-user');
     };
 
-    const [search, setSearch] = useState<Isearch>({
-        input: '',
-        loading: false,
-        result: [],
-    });
-    const setSearchInput = (value: string) => {
-        setSearch((prev) => ({
-            ...prev,
-            input: value,
-        }));
+    const [showNoti, setShowNoti] = useState(false);
+    const onHideNoti = () => {
+        setShowNoti(false);
     };
-    useEffect(() => {
-        setTimeout(() => {
-            setSearch((prev) => ({
-                ...prev,
-                result: [1, 2, 3],
-            }));
-        }, 1000);
-    }, []);
 
     return (
         <>
@@ -66,40 +46,7 @@ function Header() {
                         </Link>
                     </div>
                     <div className={cx('container-center')}>
-                        <div className={cx('search-wrapper')}>
-                            <SearchResult visible={!!search.result.length}>
-                                <form className={cx('search-form')}>
-                                    <input
-                                        type="text"
-                                        className={cx('search-input')}
-                                        placeholder="Tìm kiếm tài khoản và video"
-                                        value={search.input}
-                                        onChange={(e) => {
-                                            setSearchInput(e.target.value);
-                                        }}
-                                    />
-                                    {search.input && (
-                                        <div className={cx('search-input-icon')}>
-                                            {search.loading ? (
-                                                <AiOutlineLoading3Quarters />
-                                            ) : (
-                                                <AiFillCloseCircle
-                                                    onClick={() => {
-                                                        setSearchInput('');
-                                                    }}
-                                                />
-                                            )}
-                                        </div>
-                                    )}
-                                    <span className={cx('search-seperate')} />
-                                    <button className={cx('search-btn')} onClick={(e) => e.preventDefault()}>
-                                        <div className={cx('search-btn-icon')}>
-                                            <AiOutlineSearch />
-                                        </div>
-                                    </button>
-                                </form>
-                            </SearchResult>
-                        </div>
+                        <Search />
                     </div>
                     <div className={cx('container-right')}>
                         <Button to="/upload" btn1>
@@ -120,12 +67,28 @@ function Header() {
                                     </Tippy>
                                 </Button>
                                 <Button noSize>
-                                    <Tippy content="Hộp thư">
-                                        <div className={cx('icon-wrap')}>
-                                            <img src={images.mailBoxIcon} alt="mail" className={cx('mailbox-icon')} />
-                                            <sup className={cx('sup-badge')}>2</sup>
-                                        </div>
-                                    </Tippy>
+                                    {showNoti ? (
+                                        <Notification onHideNoti={onHideNoti}>
+                                            <div className={cx('icon-wrap')} onClick={() => setShowNoti(!showNoti)}>
+                                                <img
+                                                    src={images.mailBoxActiveIcon}
+                                                    alt="mail"
+                                                    className={cx('mailbox-icon')}
+                                                />
+                                            </div>
+                                        </Notification>
+                                    ) : (
+                                        <Tippy content="Hộp thư">
+                                            <div className={cx('icon-wrap')} onClick={() => setShowNoti(!showNoti)}>
+                                                <img
+                                                    src={images.mailBoxIcon}
+                                                    alt="mail"
+                                                    className={cx('mailbox-icon')}
+                                                />
+                                                <sup className={cx('sup-badge')}>2</sup>
+                                            </div>
+                                        </Tippy>
+                                    )}
                                 </Button>
                                 <Menu onLogout={onLogout}>
                                     <div className={cx('user')}>{<img src={user.avatar} alt="user" />}</div>

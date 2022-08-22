@@ -1,8 +1,9 @@
+// library
 import classNames from 'classnames/bind';
-
+// scss, constants,..
 import styles from './DefaultLayout.module.scss';
-
-import { Header, Sidebar } from '~/components/Layout/components';
+// components
+import { Header, Sidebar } from '~/layouts/components';
 
 const cx = classNames.bind(styles);
 

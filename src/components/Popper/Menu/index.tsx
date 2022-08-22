@@ -1,10 +1,11 @@
+// library
 import { useState } from 'react';
 import Tippy from '@tippyjs/react/headless';
 import classNames from 'classnames/bind';
-
+// scss, constants,..
 import styles from './Menu.module.scss';
 import { IMenuItem, IMenuList, logoutItem, menuItemList, menuUserItemList } from './constants';
-
+// components
 import { Wrapper, MenuItem, MenuHeader } from '~/components/Popper/components';
 
 const cx = classNames.bind(styles);

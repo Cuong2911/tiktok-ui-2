@@ -1,8 +1,9 @@
 const images = {
     logo: require('~/assets/images/logo.svg').default,
 
-    mailBoxIcon: require('~/assets/images/icons/mailBoxIcon.svg').default,
     messagesIcon: require('~/assets/images/icons/messagesIcon.svg').default,
+    mailBoxIcon: require('~/assets/images/icons/mailBoxIcon.svg').default,
+    mailBoxActiveIcon: require('~/assets/images/icons/mailBoxActiveIcon.svg').default,
 
     feedbackIcon: require('~/assets/images/icons/feedbackIcon.svg').default,
     keyboardShortcutsIcon: require('~/assets/images/icons/keyboardShortcutsIcon.svg').default,
