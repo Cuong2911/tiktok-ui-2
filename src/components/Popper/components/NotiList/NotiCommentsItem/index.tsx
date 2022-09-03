@@ -26,7 +26,7 @@ function NotiCommentsItem(props: Props) {
             </div>
             <div className={cx('content')}>
                 <p className={cx('title-text')}>
-                    <Link className={cx('user-link')} to={userCommented.userId}>
+                    <Link className={cx('user-link')} to={'/@' + userCommented.userId}>
                         {userCommented.userId}
                     </Link>
                 </p>

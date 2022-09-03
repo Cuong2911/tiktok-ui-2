@@ -1,11 +1,12 @@
 // library
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { AiOutlineSearch, AiOutlineLoading3Quarters, AiFillCloseCircle, AiOutlineMore } from 'react-icons/ai';
 import classNames from 'classnames/bind';
 // scss, constants,..
 import styles from './Search.module.scss';
 import { ISearchResult } from '~/models/searchResults';
 import { useDebounce } from '~/hooks';
+import { searchSevices } from '~/apiServices';
 // components
 import { SearchResult } from '~/components/Popper';
 
@@ -31,43 +32,40 @@ function Search() {
     };
     const debounce = useDebounce(search.input, 400);
     useEffect(() => {
-        setSearch((prev) => ({
-            ...prev,
-            loading: true,
-        }));
-        !!debounce
-            ? fetch(`https://tiktok.fullstack.edu.vn/api/users/search?q=${encodeURIComponent(debounce)}&type=less`)
-                  .then((res) => res.json())
-                  .then((res) => {
-                      setSearch((prev) => ({
-                          ...prev,
-                          result: res.data,
-                          loading: false,
-                      }));
-                  })
-                  .catch(() => {
-                      setSearch((prev) => ({
-                          ...prev,
-                          loading: false,
-                      }));
-                  })
-            : setSearch((prev) => ({
-                  ...prev,
-                  result: [],
-              }));
+        if (!debounce.trim()) {
+            setSearch((prev) => ({
+                ...prev,
+                result: [],
+            }));
+            return;
+        }
+        const fetchApi = async () => {
+            setSearch((prev) => ({
+                ...prev,
+                loading: true,
+            }));
+            const result = await searchSevices(debounce);
+            setSearch((prev) => ({
+                ...prev,
+                result: result,
+                loading: false,
+            }));
+        };
+        fetchApi();
     }, [debounce]);
     const [showResults, setShowResults] = useState(true);
-    const handleHideResults = () => {
-        setShowResults(false);
-    };
-    const handleShowResults = () => {
-        setShowResults(true);
-    };
+
     const inputRef = useRef<any>();
 
     return (
         <div className={cx('search-wrapper')}>
-            <SearchResult results={search.result} show={showResults} handleHideResults={handleHideResults}>
+            <SearchResult
+                results={search.result}
+                show={showResults}
+                handleHideResults={() => {
+                    setShowResults(false);
+                }}
+            >
                 <form className={cx('search-form')}>
                     <input
                         type="text"
@@ -78,7 +76,9 @@ function Search() {
                             setSearchInput(e.target.value);
                         }}
                         ref={inputRef}
-                        onFocus={handleShowResults}
+                        onFocus={() => {
+                            setShowResults(true);
+                        }}
                     />
                     {search.input && (
                         <div className={cx('search-input-icon')}>

@@ -26,7 +26,7 @@ function NotiMentionsItem(props: Props) {
             </div>
             <div className={cx('content')}>
                 <p className={cx('title-text')}>
-                    <Link className={cx('user-link')} to={userMentioned.userId}>
+                    <Link className={cx('user-link')} to={'/@' + userMentioned.userId}>
                         {`${userMentioned.userId}`}
                     </Link>
                 </p>

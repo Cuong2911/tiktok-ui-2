@@ -29,7 +29,7 @@ function NotiFollowersItem(props: Props) {
             </div>
             <div className={cx('content')}>
                 <p className={cx('title-text')}>
-                    <Link className={cx('user-link')} to={userFollowered.userId}>
+                    <Link className={cx('user-link')} to={'/@' + userFollowered.userId}>
                         {`${userFollowered.userId}`}
                     </Link>
                 </p>

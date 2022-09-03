@@ -36,7 +36,7 @@ function NotiLikesItem(props: Props) {
                         if (index + 1 === length && length > 2) return `và ${length - 2} người khác`;
                         if (index > 2) return ``;
                         return (
-                            <Link className={cx('user-link')} key={index} to={user.userId}>
+                            <Link className={cx('user-link')} key={index} to={'/@' + user.userId}>
                                 {index === 1 && ', '}
                                 {`${user.userId}`}
                             </Link>

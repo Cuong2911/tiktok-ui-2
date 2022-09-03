@@ -12,7 +12,6 @@ const notiReportList: INotiReportItem[] = [
         img: 'https://s199.imacdn.com/ta/2019/04/12/c0e2e906100c23a1_3f7552883baf0d45_21724115550345866154671.jpg',
     },
 ];
-
 interface INotiLikeItem {
     userLiked: {
         userId: string;
@@ -41,7 +40,7 @@ const notiLikeList: INotiLikeItem[] = [
                 avatar: 'https://p16-sign-va.tiktokcdn.com/tos-useast2a-avt-0068-aiso/36c521a877a703587ddf6939463c37de~c5_100x100.jpeg?x-expires=1660273200&x-signature=3tp6d%2FuPDYucIjO%2F6a9kx1jkij0%3D',
             },
         ],
-        user: 'cuonglk201',
+        user: 'cuonsglk201',
         comments: 'sốc điện, quyền năng,tăng tốc pha, triệu hồi aerie cũng đc nha tôi thử hết rồi',
         imgVideo:
             'https://p9-sign-sg.tiktokcdn.com/obj/v0201/db05cf4fe58c4a2cacd27b416ca7a889_1591792010?x-expires=1660222800&x-signature=dcyEZc9iXhJUkbZShUBASqU8mCM%3D',
